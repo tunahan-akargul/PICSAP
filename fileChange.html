@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
+        
+        <!-- Primary SEO Tags -->
+        <title>Photo Converter - Convert JPG, PNG, WebP, GIF | Picsap</title>
+        <meta name="title" content="Photo Converter - Convert JPG, PNG, WebP, GIF | Picsap">
+        <meta name="description" content="Free online photo converter by Picsap. Convert images between JPG, PNG, WebP, GIF formats instantly. High-quality photo format conversion with adjustable quality settings.">
+        <meta name="keywords" content="photo converter, image converter, JPG to PNG, PNG to JPG, WebP converter, GIF converter, photo format converter, image format changer, convert photos online">
+        <meta name="author" content="Picsap">
+        <meta name="robots" content="index, follow">
+        <meta name="language" content="English">
+        <meta name="revisit-after" content="7 days">
+        
+        <!-- Canonical URL -->
+        <link rel="canonical" href="https://picsap.com/fileChange.html">
+        
+        <!-- Favicon Links -->
+        <link rel="apple-touch-icon" sizes="180x180" href="Photos/Favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="Photos/Favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="Photos/Favicons/favicon-16x16.png">
+        <link rel="manifest" href="Photos/Favicons/site.webmanifest">
+        <link rel="shortcut icon" href="Photos/Favicons/favicon.ico">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://picsap.com/fileChange.html">
+        <meta property="og:title" content="Photo Converter - Convert JPG, PNG, WebP, GIF | Picsap">
+        <meta property="og:description" content="Convert photos between JPG, PNG, WebP, GIF formats for free. Professional quality photo converter with batch processing support.">
+        <meta property="og:image" content="https://picsap.com/Photos/Logo.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:site_name" content="Picsap">
+        <meta property="og:locale" content="en_US">
+        
+        <!-- Twitter Card -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://picsap.com/fileChange.html">
+        <meta property="twitter:title" content="Photo Converter - Convert JPG, PNG, WebP, GIF | Picsap">
+        <meta property="twitter:description" content="Convert photos between JPG, PNG, WebP, GIF formats for free. Professional quality photo converter with batch processing support.">
+        <meta property="twitter:image" content="https://picsap.com/Photos/Logo.png">
+        <meta property="twitter:creator" content="@picsap">
+        <meta property="twitter:site" content="@picsap">
+        
+        <!-- Additional Meta Tags -->
+        <meta name="theme-color" content="#FFB300">
+        <meta name="msapplication-TileColor" content="#FFB300">
+        
+        <!-- Mobile-specific optimizations -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="mobile-web-app-capable" content="yes">
+        
+        <!-- Structured Data / Schema.org -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Picsap Photo Converter",
+          "description": "Free online photo format converter. Convert between JPG, PNG, WebP, GIF with quality control and batch processing.",
+          "url": "https://picsap.com/fileChange.html",
+          "applicationCategory": "MultimediaApplication",
+          "operatingSystem": "Any",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "featureList": [
+            "JPG Conversion",
+            "PNG Conversion", 
+            "WebP Conversion",
+            "GIF Conversion",
+            "Quality Control",
+            "Batch Processing"
+          ]
+        }
+        </script>
+        
+        <!-- External Resources -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="snackbar.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="d-flex justify-content-center align-items-center mt-5">
+                <img src="Photos/Logo.png" class="logo mr-4 rounded-circle" alt="Picsap Logo - Photo Format Converter"><h1 class="text-center title mb-0">PHOTO CONVERTER</h1>
+            </div>
+            
+            <!-- Back Button -->
+            <div class="d-flex justify-content-start mb-4">
+                <a href="index.html" class="btn btn-outline-warning">
+                    <i class="bi bi-arrow-left"></i> Back to Home
+                </a>
+            </div>
+
+            <!-- File Upload Section -->
+            <div class="d-flex justify-content-center mb-5 properties">
+                <div class="property upload-area text-center" style="width: 60%; height: auto;">
+                    <div class="upload-content">
+                        <i class="bi bi-cloud-upload icon d-flex justify-content-center mb-3"></i>
+                        <label class="propertyTitle text-center mb-3">Drop your photos here or click to browse</label>
+                        <input type="file" id="photoInput" multiple accept="image/*" style="display: none;">
+                        <button class="btn btn-outline-warning" onclick="document.getElementById('photoInput').click()">
+                            <i class="bi bi-folder-plus"></i> Choose Files
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Format Selection -->
+            <div class="d-flex justify-content-center mb-5 properties">
+                <div class="property text-center" style="width: 60%; height: auto;">
+                    <i class="bi bi-file-earmark-image icon d-flex justify-content-center mb-5"></i>
+                    <label class="propertyTitle text-center mb-5">Select Output Format</label>
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <button class="btn btn-outline-warning format-btn w-100" data-format="jpg">
+                                <i class="bi bi-file-earmark"></i> JPG
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-outline-warning format-btn w-100" data-format="png">
+                                <i class="bi bi-file-earmark"></i> PNG
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-outline-warning format-btn w-100" data-format="webp">
+                                <i class="bi bi-file-earmark"></i> WebP
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-outline-warning format-btn w-100" data-format="gif">
+                                <i class="bi bi-file-earmark"></i> GIF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quality Settings -->
+            <div class="d-flex justify-content-center mb-5 properties">
+                <div class="property text-center" style="width: 60%; height: auto;">
+                    <i class="bi bi-sliders icon d-flex justify-content-center mb-5"></i>
+                    <label class="propertyTitle text-center mb-5">Quality Settings</label>
+                    <div class="row align-items-center">
+                        <div class="col-md-3">
+                            <label class="form-label text-light">Quality:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="range" class="form-range" id="qualityRange" min="10" max="100" value="90">
+                        </div>
+                        <div class="col-md-3">
+                            <span class="text-light" id="qualityValue">90%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Convert Button -->
+            <div class="d-flex justify-content-center mb-5">
+                <button class="btn btn-warning btn-lg" id="convertBtn" style="padding: 1rem 3rem; font-size: 1.5rem;">
+                    <i class="bi bi-arrow-repeat"></i> Convert Photos
+                </button>
+            </div>
+
+            <!-- Results Section -->
+            <div class="d-flex justify-content-center mb-5 properties" id="resultsSection" style="display: none !important;">
+                <div class="property text-center" style="width: 60%; height: auto; padding: 2vw;">
+                    <i class="bi bi-check-circle icon d-flex justify-content-center mb-3"></i>
+                    <label class="propertyTitle text-center mb-3">Conversion Complete!</label>
+                    <div id="downloadLinks"></div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="snackbar.js"></script>
+        <script>
+            const qualityRange = document.getElementById('qualityRange');
+            const qualityValue = document.getElementById('qualityValue');
+            
+            qualityRange.addEventListener('input', function() {
+                qualityValue.textContent = this.value + '%';
+            });
+
+            const formatButtons = document.querySelectorAll('.format-btn');
+            let selectedFormat = '';
+
+            formatButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    formatButtons.forEach(b => b.classList.remove('btn-warning'));
+                    formatButtons.forEach(b => b.classList.add('btn-outline-warning'));
+                    
+                    this.classList.remove('btn-outline-warning');
+                    this.classList.add('btn-warning');
+                    
+                    selectedFormat = this.dataset.format;
+                });
+            });
+
+            const photoInput = document.getElementById('photoInput');
+            const uploadArea = document.querySelector('.upload-area');
+            const convertBtn = document.getElementById('convertBtn');
+            const resultsSection = document.getElementById('resultsSection');
+            
+            let selectedFiles = [];
+
+            photoInput.addEventListener('change', function(e) {
+                selectedFiles = Array.from(e.target.files);
+                updateUploadArea();
+            });
+
+            uploadArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.style.borderColor = '#FFB300';
+                this.style.backgroundColor = 'rgba(174, 0, 0, 0.1)';
+            });
+
+            uploadArea.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                this.style.borderColor = '#FFB300';
+                this.style.backgroundColor = 'transparent';
+            });
+
+            uploadArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.style.borderColor = '#FFB300';
+                this.style.backgroundColor = 'transparent';
+                
+                selectedFiles = Array.from(e.dataTransfer.files).filter(file => file.type.startsWith('image/'));
+                updateUploadArea();
+            });
+
+            function updateUploadArea() {
+                const uploadContent = document.querySelector('.upload-content');
+                if (selectedFiles.length > 0) {
+                    uploadContent.innerHTML = `
+                        <i class="bi bi-images icon d-flex justify-content-center mb-3"></i>
+                        <label class="propertyTitle text-center mb-3">${selectedFiles.length} files selected</label><br>
+                        <input type="file" id="photoInput" multiple accept="image/*" style="display: none;">
+                        <button class="btn btn-outline-warning" onclick="document.getElementById('photoInput').click()">
+                            <i class="bi bi-folder-plus"></i> Choose Different Files
+                        </button>
+                    `;
+                }
+            }
+
+            convertBtn.addEventListener('click', function() {
+                if (selectedFiles.length === 0) {
+                    showAlertSnackbar('Please select files to convert');
+                    return;
+                }
+
+                if (selectedFormat === '') {
+                    showAlertSnackbar('Please select a format to convert to');
+                    return;
+                }
+
+                this.disabled = true;
+                this.innerHTML = '<i class="bi bi-arrow-repeat"></i> Converting...';
+
+                convertFiles(selectedFiles, selectedFormat, qualityRange.value / 100).then(() => {
+                    this.disabled = false;
+                    this.innerHTML = '<i class="bi bi-arrow-repeat"></i> Convert Photos';
+                    showSuccessSnackbar('Files converted successfully!');
+                }).catch(error => {
+                    console.error('Conversion failed:', error);
+                    showAlertSnackbar('Conversion failed. Please try again.');
+                    this.disabled = false;
+                    this.innerHTML = '<i class="bi bi-arrow-repeat"></i> Convert Photos';
+                });
+            });
+
+            async function convertFiles(files, format, quality) {
+                const downloadLinks = document.getElementById('downloadLinks');
+                downloadLinks.innerHTML = '';
+                
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    try {
+                        const convertedBlob = await convertImage(file, format, quality);
+                        const fileName = file.name.split('.')[0] + '.' + format;
+                        
+                        const downloadUrl = URL.createObjectURL(convertedBlob);
+                        const linkDiv = document.createElement('div');
+                        linkDiv.className = 'mb-2';
+                        linkDiv.innerHTML = `
+                            <button class="btn btn-outline-success download-btn" data-url="${downloadUrl}" data-filename="${fileName}">
+                                <i class="bi bi-download"></i> Download ${fileName}
+                            </button>
+                        `;
+                        downloadLinks.appendChild(linkDiv);
+                        
+                        const downloadBtn = linkDiv.querySelector('.download-btn');
+                        downloadBtn.addEventListener('click', function() {
+                            const link = document.createElement('a');
+                            link.href = this.dataset.url;
+                            link.download = this.dataset.filename;
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                        });
+                        
+                    } catch (error) {
+                        console.error(`Failed to convert ${file.name}:`, error);
+                        const errorDiv = document.createElement('div');
+                        errorDiv.className = 'mb-2';
+                        errorDiv.innerHTML = `
+                            <button class="btn btn-outline-warning" disabled>
+                                <i class="bi bi-x-circle"></i> Failed: ${file.name}
+                            </button>
+                        `;
+                        downloadLinks.appendChild(errorDiv);
+                    }
+                }
+                
+                // Show results section
+                resultsSection.style.display = 'block';
+                resultsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+
+            function convertImage(file, format, quality) {
+                return new Promise((resolve, reject) => {
+                    const img = new Image();
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    img.onload = function() {
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        
+                        // Draw image to canvas
+                        ctx.drawImage(img, 0, 0);
+                        
+                        // Convert to desired format
+                        canvas.toBlob(function(blob) {
+                            if (blob) {
+                                resolve(blob);
+                            } else {
+                                reject(new Error('Failed to convert image'));
+                            }
+                        }, `image/${format}`, quality);
+                    };
+                    
+                    img.onerror = function() {
+                        reject(new Error('Failed to load image'));
+                    };
+                    
+                    // Load the image
+                    img.src = URL.createObjectURL(file);
+                });
+            }
+        </script>
+        
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content text-center">
+            <div class="footer-social">
+                <a href="https://github.com/tunahan-akargul" class="social-link" aria-label="GitHub Profile"><i class="bi bi-github"></i></a>
+                © 2024 PICSAP - Simple Photo Editing Tools
+                <a href="https://www.linkedin.com/in/tunahan-akarg%C3%BCl-b7a7a9208/" class="social-link" aria-label="LinkedIn Profile"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+    </body>
+</html>

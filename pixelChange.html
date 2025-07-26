@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
+        
+        <!-- Primary SEO Tags -->
+        <title>Photo Resizer - Resize Images Online Free | Picsap</title>
+        <meta name="title" content="Photo Resizer - Resize Images Online Free | Picsap">
+        <meta name="description" content="Free online photo resizer by Picsap. Resize images by pixels or aspect ratio. Professional image resizing tool with quality control and batch processing.">
+        <meta name="keywords" content="photo resizer, image resizer, resize photos online, image size changer, photo dimensions, picture resizer, image scaling, resize pictures">
+        <meta name="author" content="Picsap">
+        <meta name="robots" content="index, follow">
+        
+        <!-- Canonical URL -->
+        <link rel="canonical" href="https://picsap.com/pixelChange.html">
+        
+        <!-- Favicon Links -->
+        <link rel="apple-touch-icon" sizes="180x180" href="Photos/Favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="Photos/Favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="Photos/Favicons/favicon-16x16.png">
+        <link rel="manifest" href="Photos/Favicons/site.webmanifest">
+        <link rel="shortcut icon" href="Photos/Favicons/favicon.ico">
+        
+        <!-- Open Graph -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://picsap.com/pixelChange.html">
+        <meta property="og:title" content="Photo Resizer - Resize Images Online Free | Picsap">
+        <meta property="og:description" content="Resize photos and images for free with precise control over dimensions and quality. Professional photo resizing tool by Picsap.">
+        <meta property="og:image" content="https://picsap.com/Photos/Logo.png">
+        <meta property="og:site_name" content="Picsap">
+        
+        <!-- Twitter Card -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:title" content="Photo Resizer - Resize Images Online Free | Picsap">
+        <meta property="twitter:description" content="Resize photos and images for free with precise control over dimensions and quality. Professional photo resizing tool by Picsap.">
+        <meta property="twitter:image" content="https://picsap.com/Photos/Logo.png">
+        
+        <!-- Additional Meta Tags -->
+        <meta name="theme-color" content="#FFB300">
+        
+        <!-- Mobile-specific optimizations -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="mobile-web-app-capable" content="yes">
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="snackbar.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="d-flex justify-content-center align-items-center mt-5">
+                <img src="Photos/Logo.png" class="logo mr-4 rounded-circle" alt="Picsap Logo - Photo Resizer Tool"><h1 class="text-center title mb-0">PIXEL CHANGER</h1>
+            </div>
+            
+            <!-- Back Button -->
+            <div class="d-flex justify-content-start mb-3 mb-md-4">
+                <a href="index.html" class="btn btn-outline-warning">
+                    <i class="bi bi-arrow-left"></i> Back to Home
+                </a>
+            </div>
+
+            <!-- File Upload Section -->
+            <div class="d-flex justify-content-center mb-5 properties">
+                <div class="property upload-area text-center" style="width: 60%; height: auto;">
+                    <div class="upload-content">
+                        <i class="bi bi-cloud-upload icon d-flex justify-content-center mb-3"></i>
+                        <label class="propertyTitle text-center mb-3">Drop your photo here or click to browse</label>
+                        <input type="file" id="photoInput" accept="image/*" style="display: none !important;">
+                        <button class="btn btn-outline-warning" onclick="document.getElementById('photoInput').click()">
+                            <i class="bi bi-folder-plus"></i> Choose Photo
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Preview Section -->
+            <div class="d-flex justify-content-center mb-5 properties" id="previewSection" style="display: none !important;">
+                <div class="property text-center" style="width: 60%; height: auto;">
+                    <label class="propertyTitle text-center mb-3">Current Image</label>
+                    <div class="image-preview-container mb-3">
+                        <img id="imagePreview" class="imagePreview">
+                    </div>
+                    <div class="image-info">
+                        <span class="text-light" id="imageInfo">Original: 0 x 0 pixels</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mode Selection -->
+            <div class="d-flex justify-content-center mb-5 properties">
+                <div class="property text-center" style="width: 60%; height: auto;">
+                    <i class="bi bi-toggles icon d-flex justify-content-center mb-3"></i>
+                    <label class="propertyTitle text-center mb-3">Resize Mode</label>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <button class="btn btn-warning mode-btn w-100" data-mode="pixel" id="pixelModeBtn">
+                                <i class="bi bi-grid-3x3"></i> Pixel Dimensions
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-outline-warning mode-btn w-100" data-mode="ratio" id="ratioModeBtn">
+                                <i class="bi bi-aspect-ratio"></i> Aspect Ratio
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pixel Mode Settings -->
+            <div class="d-flex justify-content-center mb-5 properties" id="pixelModeSection">
+                <div class="property text-center" style="width: 60%; height: auto;">
+                    <i class="bi bi-arrows-fullscreen icon d-flex justify-content-center mb-3"></i>
+                    <label class="propertyTitle text-center mb-3">Set Pixel Dimensions</label>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label text-light">Width (pixels):</label>
+                            <input type="number" class="form-control" id="widthPixels" min="1" max="5000" placeholder="1920">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label text-light">Height (pixels):</label>
+                            <input type="number" class="form-control" id="heightPixels" min="1" max="5000" placeholder="1080">
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="maintainAspectRatio" checked>
+                            <label class="form-check-label text-light" for="maintainAspectRatio">
+                                Maintain aspect ratio
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ratio Mode Settings -->
+            <div class="d-flex justify-content-center mb-5 properties pa-5" id="ratioModeSection" style="display: none !important;">
+                <div class="property text-center" style="width: 60%;">
+                    <i class="bi bi-aspect-ratio-fill icon d-flex justify-content-center mb-3"></i>
+                    <label class="propertyTitle text-center mb-3">Set Aspect Ratio</label>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label text-light">Width Ratio:</label>
+                            <input type="number" class="form-control" id="widthRatio" min="1" max="100" placeholder="16">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label text-light">Height Ratio:</label>
+                            <input type="number" class="form-control" id="heightRatio" min="1" max="100" placeholder="9">
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <label class="form-label text-light">Base Dimension:</label>
+                            <select class="form-select mb-4" id="baseDimension">
+                                <option value="width">Fit to Width</option>
+                                <option value="height">Fit to Height</option>
+                                <option value="contain">Fit Within (Contain)</option>
+                                <option value="cover">Fill Area (Cover)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label text-light">Target Width:</label>
+                                <input type="number" class="form-control" id="targetWidth" min="1" max="5000" placeholder="1920">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-light">Target Height:</label>
+                                <input type="number" class="form-control" id="targetHeight" min="1" max="5000" placeholder="1080">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quality Settings -->
+            <div class="d-flex justify-content-center mb-5 properties">
+                <div class="property text-center" style="width: 60%; height: auto;">
+                    <i class="bi bi-sliders icon d-flex justify-content-center mb-3"></i>
+                    <label class="propertyTitle text-center mb-3">Quality Settings</label>
+                    <div class="row align-items-center">
+                        <div class="col-md-3">
+                            <label class="form-label text-light">Quality:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="range" class="form-range" id="qualityRange" min="10" max="100" value="90">
+                        </div>
+                        <div class="col-md-3">
+                            <span class="text-light" id="qualityValue">90%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Convert Button -->
+            <div class="d-flex justify-content-center mb-5">
+                <button class="btn btn-warning btn-lg" id="resizeBtn" style="padding: 1rem 3rem; font-size: 1.5rem;">
+                    <i class="bi bi-arrows-angle-expand"></i> Resize Image
+                </button>
+            </div>
+
+            <!-- Results Section -->
+            <div class="d-flex justify-content-center mb-5 properties" id="resultsSection" style="display: none !important;">
+                <div class="property text-center" style="width: 60%; height: auto;">
+                    <i class="bi bi-check-circle icon d-flex justify-content-center mb-3"></i>
+                    <label class="propertyTitle text-center mb-3">Resize Complete!</label>
+                    <div class="resized-image-container mb-3">
+                        <img id="resizedImagePreview" style="padding: 1vw; max-width: 100%; max-height: 300px; border-radius: 10px; border: 5px solid #28a745;">
+                    </div>
+                    <div class="image-info mb-3">
+                        <span class="text-light" id="resizedImageInfo">New: 0 x 0 pixels</span>
+                    </div>
+                    <div id="downloadSection"></div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="snackbar.js"></script>
+        <script>
+            // Global variables
+            let selectedFile = null;
+            let currentMode = 'pixel';
+            let originalImage = null;
+            let originalWidth = 0;
+            let originalHeight = 0;
+            let aspectRatio = 1;
+
+            // Quality range slider
+            const qualityRange = document.getElementById('qualityRange');
+            const qualityValue = document.getElementById('qualityValue');
+            
+            qualityRange.addEventListener('input', function() {
+                qualityValue.textContent = this.value + '%';
+            });
+
+            // Mode selection
+            const modeButtons = document.querySelectorAll('.mode-btn');
+            const pixelModeSection = document.getElementById('pixelModeSection');
+            const ratioModeSection = document.getElementById('ratioModeSection');
+
+            modeButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    modeButtons.forEach(b => {
+                        b.classList.remove('btn-warning');
+                        b.classList.add('btn-outline-warning');
+                    });
+                    
+                    this.classList.remove('btn-outline-warning');
+                    this.classList.add('btn-warning');
+                    
+                    currentMode = this.dataset.mode;
+                    
+                    if (currentMode === 'pixel') {
+                        pixelModeSection.style.setProperty('display', 'flex', 'important');
+                        ratioModeSection.style.setProperty('display', 'none', 'important');
+                    } else {
+                        pixelModeSection.style.setProperty('display', 'none', 'important');
+                        ratioModeSection.style.setProperty('display', 'flex', 'important');
+                    }
+                });
+            });
+
+            // File input handling
+            const photoInput = document.getElementById('photoInput');
+            const uploadArea = document.querySelector('.upload-area');
+            const previewSection = document.getElementById('previewSection');
+            const imagePreview = document.getElementById('imagePreview');
+            const imageInfo = document.getElementById('imageInfo');
+            const resizeBtn = document.getElementById('resizeBtn');
+            const resultsSection = document.getElementById('resultsSection');
+            
+            photoInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    handleFileSelection(file);
+                }
+            });
+
+            // Drag and drop functionality
+            uploadArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.style.borderColor = '#ae0000';
+                this.style.backgroundColor = 'rgba(174, 0, 0, 0.1)';
+            });
+
+            uploadArea.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                this.style.borderColor = '#ae0000';
+                this.style.backgroundColor = 'transparent';
+            });
+
+            uploadArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.style.borderColor = '#ae0000';
+                this.style.backgroundColor = 'transparent';
+                
+                const files = Array.from(e.dataTransfer.files).filter(file => file.type.startsWith('image/'));
+                if (files.length > 0) {
+                    handleFileSelection(files[0]);
+                } else {
+                    showAlertSnackbar('Please drop a valid image file');
+                }
+            });
+
+            function handleFileSelection(file) {
+                selectedFile = file;
+                
+                // Update upload area
+                const uploadContent = document.querySelector('.upload-content');
+                uploadContent.innerHTML = `
+                    <i class="bi bi-image icon d-flex justify-content-center mb-3"></i>
+                    <label class="propertyTitle text-center mb-3">${file.name}</label>
+                    <input type="file" id="photoInput" accept="image/*" style="display: none !important;">
+                    <button class="btn btn-outline-warning" onclick="document.getElementById('photoInput').click()">
+                        <i class="bi bi-folder-plus"></i> Choose Different Photo
+                    </button>
+                `;
+
+                // Load and display image
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        originalImage = img;
+                        originalWidth = img.width;
+                        originalHeight = img.height;
+                        aspectRatio = originalWidth / originalHeight;
+                        
+                        imagePreview.src = e.target.result;
+                        imageInfo.textContent = `Original: ${originalWidth} x ${originalHeight} pixels`;
+                        
+                        // Set default values
+                        document.getElementById('widthPixels').value = originalWidth;
+                        document.getElementById('heightPixels').value = originalHeight;
+                        document.getElementById('targetWidth').value = originalWidth;
+                        document.getElementById('targetHeight').value = originalHeight;
+                        
+                        previewSection.style.display = 'block';
+                        const fileExtension = file.name.split('.').pop().toLowerCase();
+                        showSuccessSnackbar(`Image loaded successfully! Format: ${fileExtension.toUpperCase()}`);
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+
+            // Maintain aspect ratio functionality
+            const widthPixels = document.getElementById('widthPixels');
+            const heightPixels = document.getElementById('heightPixels');
+            const maintainAspectRatio = document.getElementById('maintainAspectRatio');
+
+            widthPixels.addEventListener('input', function() {
+                if (maintainAspectRatio.checked && originalWidth > 0) {
+                    const newHeight = Math.round(this.value / aspectRatio);
+                    heightPixels.value = newHeight;
+                }
+            });
+
+            heightPixels.addEventListener('input', function() {
+                if (maintainAspectRatio.checked && originalHeight > 0) {
+                    const newWidth = Math.round(this.value * aspectRatio);
+                    widthPixels.value = newWidth;
+                }
+            });
+
+            // Resize functionality
+            resizeBtn.addEventListener('click', function() {
+                if (!selectedFile) {
+                    showWarningSnackbar('Please select an image first');
+                    return;
+                }
+
+                let targetWidth, targetHeight;
+
+                if (currentMode === 'pixel') {
+                    targetWidth = parseInt(widthPixels.value);
+                    targetHeight = parseInt(heightPixels.value);
+                    
+                    if (!targetWidth || !targetHeight || targetWidth <= 0 || targetHeight <= 0) {
+                        showAlertSnackbar('Please enter valid width and height values');
+                        return;
+                    }
+                } else {
+                    // Ratio mode
+                    const widthRatio = parseInt(document.getElementById('widthRatio').value);
+                    const heightRatio = parseInt(document.getElementById('heightRatio').value);
+                    const baseDimension = document.getElementById('baseDimension').value;
+                    const targetW = parseInt(document.getElementById('targetWidth').value);
+                    const targetH = parseInt(document.getElementById('targetHeight').value);
+                    
+                    if (!widthRatio || !heightRatio || widthRatio <= 0 || heightRatio <= 0) {
+                        showAlertSnackbar('Please enter valid ratio values');
+                        return;
+                    }
+                    
+                    const ratioAspect = widthRatio / heightRatio;
+                    
+                    if (baseDimension === 'width') {
+                        targetWidth = targetW || originalWidth;
+                        targetHeight = Math.round(targetWidth / ratioAspect);
+                    } else if (baseDimension === 'height') {
+                        targetHeight = targetH || originalHeight;
+                        targetWidth = Math.round(targetHeight * ratioAspect);
+                    } else if (baseDimension === 'contain') {
+                        const containerWidth = targetW || originalWidth;
+                        const containerHeight = targetH || originalHeight;
+                        const containerAspect = containerWidth / containerHeight;
+                        
+                        if (ratioAspect > containerAspect) {
+                            targetWidth = containerWidth;
+                            targetHeight = Math.round(containerWidth / ratioAspect);
+                        } else {
+                            targetHeight = containerHeight;
+                            targetWidth = Math.round(containerHeight * ratioAspect);
+                        }
+                    } else { // cover
+                        const containerWidth = targetW || originalWidth;
+                        const containerHeight = targetH || originalHeight;
+                        const containerAspect = containerWidth / containerHeight;
+                        
+                        if (ratioAspect > containerAspect) {
+                            targetHeight = containerHeight;
+                            targetWidth = Math.round(containerHeight * ratioAspect);
+                        } else {
+                            targetWidth = containerWidth;
+                            targetHeight = Math.round(containerWidth / ratioAspect);
+                        }
+                    }
+                }
+
+                // Start resize process
+                this.disabled = true;
+                this.innerHTML = '<i class="bi bi-arrows-angle-expand"></i> Resizing...';
+
+                // Get original file format
+                const originalFormat = selectedFile.type;
+                const originalExtension = selectedFile.name.split('.').pop().toLowerCase();
+                
+                resizeImage(originalImage, targetWidth, targetHeight, qualityRange.value / 100, originalFormat).then(resizedBlob => {
+                    // Show results
+                    const resizedImagePreview = document.getElementById('resizedImagePreview');
+                    const resizedImageInfo = document.getElementById('resizedImageInfo');
+                    const downloadSection = document.getElementById('downloadSection');
+                    
+                    const resizedUrl = URL.createObjectURL(resizedBlob);
+                    resizedImagePreview.src = resizedUrl;
+                    resizedImageInfo.textContent = `New: ${targetWidth} x ${targetHeight} pixels`;
+                    
+                    // Create download button with same format as original
+                    const fileName = selectedFile.name.split('.')[0] + `_${targetWidth}x${targetHeight}.${originalExtension}`;
+                    downloadSection.innerHTML = `
+                        <button class="btn btn-success btn-lg download-btn w-100" data-url="${resizedUrl}" data-filename="${fileName}">
+                            <i class="bi bi-download"></i> Download ${originalExtension.toUpperCase()} Image
+                        </button>
+                    `;
+                    
+                    // Add download functionality
+                    const downloadBtn = downloadSection.querySelector('.download-btn');
+                    downloadBtn.addEventListener('click', function() {
+                        const link = document.createElement('a');
+                        link.href = this.dataset.url;
+                        link.download = this.dataset.filename;
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        showSuccessSnackbar(`${originalExtension.toUpperCase()} image downloaded successfully!`);
+                    });
+                    
+                    resultsSection.style.display = 'block';
+                    resultsSection.scrollIntoView({ behavior: 'smooth' });
+                    
+                    this.disabled = false;
+                    this.innerHTML = '<i class="bi bi-arrows-angle-expand"></i> Resize Image';
+                    showSuccessSnackbar(`Image resized successfully! Saved as ${originalExtension.toUpperCase()}`);
+                    
+                }).catch(error => {
+                    console.error('Resize failed:', error);
+                    showAlertSnackbar('Resize failed. Please try again.');
+                    this.disabled = false;
+                    this.innerHTML = '<i class="bi bi-arrows-angle-expand"></i> Resize Image';
+                });
+            });
+
+            // Image resize function using Canvas API
+            function resizeImage(img, width, height, quality, format) {
+                return new Promise((resolve, reject) => {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    canvas.width = width;
+                    canvas.height = height;
+                    
+                    // Draw resized image
+                    ctx.drawImage(img, 0, 0, width, height);
+                    
+                    // Use original format or fallback to JPEG
+                    const outputFormat = format || 'image/jpeg';
+                    
+                    // For PNG, don't use quality parameter (it doesn't support it)
+                    const outputQuality = outputFormat === 'image/png' ? undefined : quality;
+                    
+                    // Convert to blob with original format
+                    canvas.toBlob(function(blob) {
+                        if (blob) {
+                            resolve(blob);
+                        } else {
+                            reject(new Error('Failed to resize image'));
+                        }
+                    }, outputFormat, outputQuality);
+                });
+            }
+        </script>
+        
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content text-center">
+            <div class="footer-social">
+                <a href="https://github.com/tunahan-akargul" class="social-link" aria-label="GitHub Profile"><i class="bi bi-github"></i></a>
+                © 2024 PICSAP - Simple Photo Editing Tools
+                <a href="https://www.linkedin.com/in/tunahan-akarg%C3%BCl-b7a7a9208/" class="social-link" aria-label="LinkedIn Profile"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+    </body>
+</html>
