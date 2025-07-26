@@ -30,6 +30,7 @@ body {
 }
 
 .buttonContainer{
+    margin-top: 0 !important;
     height: 24vw;
     min-height: 200px;
 }
